@@ -88,8 +88,10 @@ public class InfixToPostfix {
             if(Character.isDigit(character)){
                 stack.push(Double.valueOf(Character.toString(character)));
             }else if(isOperator(character)){
-
-                stack.push(evaluate(stack.pop(),stack.pop(),character));
+                double second = stack.pop();
+                double first = stack.pop();
+                stack.push(evaluate(first, second,character));
+                //stack.push(evaluate(stack.pop(),stack.pop(),character));
             }
         }
         response = stack.peek();
