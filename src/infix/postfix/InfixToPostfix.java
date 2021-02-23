@@ -86,8 +86,9 @@ public class InfixToPostfix {
         for (int i = 0; i < postfix.length(); i++) {
             char character = postfix.charAt(i);
             if(Character.isDigit(character)){
-                stack.push((double)character);
+                stack.push(Double.valueOf(Character.toString(character)));
             }else if(isOperator(character)){
+
                 stack.push(evaluate(stack.pop(),stack.pop(),character));
             }
         }
@@ -95,6 +96,8 @@ public class InfixToPostfix {
         return response;
     }
     private double evaluate(double first, double second, char operator){
+        System.out.println(first);
+        System.out.println(second);
         double response = 0;
         switch (operator) {
             case '^':
